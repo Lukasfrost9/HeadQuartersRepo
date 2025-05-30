@@ -1,0 +1,66 @@
+Useful Functions
+
+
+
+// This code displays an alert box using Javascript that shows up only if the length of the element name is 8 characters. ///////////////////////////////////////////
+
+<style name='respview.client.js' mode="after" with="QUESTION_NUMBER" wrap="ready"><![CDATA[
+  var ELEMENT_NAME = document.getElementById(ELEMENT_ID);
+
+  // Function to execute the code when the element loses focus
+  function runCode() {
+    if (ELEMENT_NAME.value.length == 8) {
+     alert("Please double-check that " + ELEMENT_NAME.value + " is your ID.");
+  }
+  }
+  // Add a blur event listener to the input element
+  if (ELEMENT_NAME) {
+    ELEMENT_NAME.addEventListener('blur', runCode);
+  }
+]]></style>
+
+// This code does something when the element is out of focus ///////////////////////////////////////////
+
+<style mode="after" name="respview.client.js" with="Q3" wrap="ready"><![CDATA[
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+
+waitForElm('#downshift-0-input').then((el) => {
+  x = document.querySelectorAll(".answers-list");
+  x[1].style.display = 'none';
+  let drugi = document.getElementById('ans2095.0.0');
+  console.log('prc');
+    let input = document.getElementById('your-input-id'); // Replace 'your-input-id' with the actual ID of your input element
+
+  el.addEventListener(
+       'focusout',
+       function() { 
+        drugi.value = el.value
+       },
+  );
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter")
+     {
+        drugi.value = el.value
+     }
+  },
+  )
+  });
