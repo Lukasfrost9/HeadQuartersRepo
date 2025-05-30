@@ -1,9 +1,5 @@
-Useful Functions
 
-
-
-// This code displays an alert box using Javascript that shows up only if the length of the element name is 8 characters. ///////////////////////////////////////////
-
+// This code displays an alert box using JavaScript that shows up only if the length of the element name is 8 characters. //
 <style name='respview.client.js' mode="after" with="QUESTION_NUMBER" wrap="ready"><![CDATA[
   var ELEMENT_NAME = document.getElementById(ELEMENT_ID);
 
@@ -19,8 +15,7 @@ Useful Functions
   }
 ]]></style>
 
-// This code does something when the element is out of focus ///////////////////////////////////////////
-
+// This code does something when the element is out of focus //
 <style mode="after" name="respview.client.js" with="Q3" wrap="ready"><![CDATA[
 function waitForElm(selector) {
     return new Promise(resolve => {
